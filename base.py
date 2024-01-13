@@ -1,12 +1,15 @@
 import subprocess
 import weather
-import functions
+import writeMessage
 
 def runAppleScript(scriptTemplate: str, **kwargs):
     try:
         if scriptTemplate == "weather":
             weather.main()
             return
+        elif 'Message' in scriptTemplate:
+            message = writeMessage.main(kwargs['arg2'])
+            kwargs['arg2'] = message
         command = scriptTemplate.format(**kwargs)
     except Exception as e:
         print(f"Error: {e}")
