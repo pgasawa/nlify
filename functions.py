@@ -36,5 +36,7 @@ end tell""",
 
 "takeScreenshot": """
     do shell script "screencapture ~/Desktop/screenshot.png"
-"""
+""",
+
+"weather": """weather"""
 }

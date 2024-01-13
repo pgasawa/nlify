@@ -21,7 +21,6 @@ def call_openai_api(prompt):
 
 def main():
     user_input = input("Enter your input: ")
-
     try:
         routines = pd.read_csv("routines.csv")
         if user_input in routines["routineName"].values:

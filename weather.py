@@ -1,7 +1,19 @@
 import requests
-import llm_mapper
 import geocoder
+from openai import OpenAI
+client = OpenAI()
+import openai
 location_coords = geocoder.ip('me').latlng
+
+def call_openai_api(prompt):
+    response = client.chat.completions.create(
+        model="gpt-4-1106-preview",
+        messages=[
+            {"role": "system", "content": "You are a helpful assistant summarizing the weather."},
+            {"role": "user", "content": prompt},
+        ]
+    )
+    return response
 
 def get_current_weather(api_key, location):
     base_url = "http://api.weatherapi.com/v1/current.json"
@@ -23,20 +35,16 @@ def get_current_weather(api_key, location):
         print(f"Error: Unable to retrieve weather data. Status code: {response.status_code}")
         return None
 
-api_key = '5f8609babd8f4d2eb9b220636241301'
-location_str = str(location_coords[0]) + "," + str(location_coords[1])
+def main():
+    api_key = '5f8609babd8f4d2eb9b220636241301'
+    location_str = str(location_coords[0]) + "," + str(location_coords[1])
 
-# Get and print the current weather
-weather_data = get_current_weather(api_key, location_str)
+    # Get and print the current weather
+    weather_data = get_current_weather(api_key, location_str)
 
-if weather_data:
-    print("Current Weather in", )
-else:
-    print("Unable to retrieve current weather data.")
+    weather_prompt = "Here is weather data for where I am. Please concisely summarize important takeaways in two sentences:" + str(weather_data)
 
-weather_prompt = "Here is weather data for where I am. Can you give me 5 tips as I prepare for the morning?" + str(weather_data)
+    response = call_openai_api(weather_prompt)
 
-response = llm_mapper.call_openai_api(weather_prompt)
-
-response = response.choices[0].message.content
-print(response)
+    response = response.choices[0].message.content
+    print(response)
