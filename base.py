@@ -13,5 +13,3 @@ def runAppleScript(scriptTemplate: str, **kwargs):
     except Exception as e:
         print(f"Error: {e}")
         return None
-    
-runAppleScript(functions.functions["accessFiles"], arg1="TreeHacks")

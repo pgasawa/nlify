@@ -1,0 +1,2 @@
+routineName,functions
+wake up mode,"[['openApplication', 'slack'], ['closeApplication', 'calculator']]"

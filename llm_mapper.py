@@ -2,10 +2,10 @@ import openai
 import os
 from openai import OpenAI
 client = OpenAI()
-import json
-import base
-import functions
 import simple_llm_command
+import call_routine
+import pandas as pd
+import define_routine
 
 openai.api_key = os.environ["OPENAI_API_KEY"]
 
@@ -22,20 +22,23 @@ def call_openai_api(prompt):
 def main():
     user_input = input("Enter your input: ")
 
-    # list of routines to check
-    # check if there's an existing routine from some list
-    # if using routine
-    # call routine
+    try:
+        routines = pd.read_csv("routines.csv")
+        if user_input in routines["routineName"].values:
+            call_routine.main(user_input)
+            return
+    except:
+        routines = pd.DataFrame()
 
-    prompt = f"""The user entered command is this: {user_input}. Here is a list of the ways you can classify this command: 1) the user wants to run a simple command: "simpleCommand", 2) the user wants to define a routine: "defineRoutine." Please output what kind of command the user inputted. For example, if the user says to open an application like Safari or Slack, please output a single string simpleCommand."""
+    prompt = f"""The user entered command is this: {user_input}. Here is a list of the ways you can classify this command: 1) the user wants to run a simple command: "simpleCommand", 2) the user wants to define a routine: "defineRoutine." Please output what kind of command the user inputted. For example, if the user says to open an application like Safari or Slack, please output a single string simpleCommand. Or if they say whenever I say work mode, open slack and close messages, then output defineCommand"""
     response = call_openai_api(prompt)
     response = response.choices[0].message.content
 
     if 'simple' in response:
         simple_llm_command.main(user_input)
-    # else user is defining a routine
+    elif "define" in response:
+        define_routine.main(user_input)
     else:
-        return
+        print("Command not recognized. Please try again.")
 
-if __name__ == "__main__":
-    main()
+main()

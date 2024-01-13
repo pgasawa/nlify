@@ -37,6 +37,3 @@ def main(user_input):
     arg3 = data_dict.get("Argument3", "")
 
     base.runAppleScript(functions.functions[function], arg1=arg1, arg2=arg2, arg3=arg3)
-
-if __name__ == "__main__":
-    main()
