@@ -1,14 +1,18 @@
 import tkinter as tk
 import llm_mapper
 
-FONTSIZE = 40
+FONTSIZE = 30
+
+WRAP_LENGTH = 600
 
 def get_user_input():
     user_input = entry.get()
-    llm_mapper.main(user_input)
+    response = llm_mapper.main(user_input)
     entry.delete(0, tk.END)  # Clear the entry box after getting input
     # Show the "Done with" label followed by user input when the task is completed
-    done_label.config(text=f"Your task "{user_input}" has finished.")
+    done_label.config(text=f"Your task \"{user_input}\" has finished.")
+    if response: 
+        done_label.config(text=response)
     done_label.pack()
 
 # Create the main window
@@ -27,8 +31,8 @@ entry.pack(pady=10)
 button = tk.Button(root, text="Submit", command=get_user_input)
 button.pack(pady=10)
 
-# Create a label to display "Done" (initially hidden)
-done_label = tk.Label(root, text="", font=("Arial", FONTSIZE))
+# Create a label to display "Done" with text wrapping
+done_label = tk.Label(root, text="", font=("Arial", FONTSIZE), wraplength=WRAP_LENGTH)
 done_label.pack()
 done_label.pack_forget()  # Hide the "Done" label initially
 

@@ -1,2 +1,6 @@
 routineName,functions
 wake up mode,"[['openApplication', 'slack'], ['closeApplication', 'calculator']]"
+morning mode,"[{'function': 'weather', 'parameters': {}}]"
+nighttime mode,"[{'function': 'closeApplication', 'parameters': 'Apple Music'}, {'function': 'closeApplication', 'parameters': 'Calculator'}]"
+nighttime mode,"[{'openApplication': 'Night mode app'}, {'closeApplication': 'Phone'}, {'speak': 'Good night!'}, {'sendMessage': [""partner's phone number"", 'Going to bed now, talk to you in the morning.']}, {'takeScreenshot': None}, {'weather': None}]"
+nighttime mode,"[['closeApplication', 'Messages'], ['speak', 'Good night!'], ['takeScreenshot']]"

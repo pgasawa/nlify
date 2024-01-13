@@ -38,4 +38,5 @@ def main(user_input):
     arg2 = data_dict.get("Argument2", "")
     arg3 = data_dict.get("Argument3", "")
 
-    base.runAppleScript(functions.functions[function], arg1=arg1, arg2=arg2, arg3=arg3)
+    response = base.runAppleScript(functions.functions[function], arg1=arg1, arg2=arg2, arg3=arg3)
+    return response

@@ -1,5 +1,6 @@
 import requests
 import geocoder
+from typing import Optional
 from openai import OpenAI
 client = OpenAI()
 import openai
@@ -35,9 +36,11 @@ def get_current_weather(api_key, location):
         print(f"Error: Unable to retrieve weather data. Status code: {response.status_code}")
         return None
 
-def main():
+def main(loc: Optional[str]):
     api_key = '5f8609babd8f4d2eb9b220636241301'
     location_str = str(location_coords[0]) + "," + str(location_coords[1])
+    if loc:
+        location_str = loc
 
     # Get and print the current weather
     weather_data = get_current_weather(api_key, location_str)
@@ -47,4 +50,4 @@ def main():
     response = call_openai_api(weather_prompt)
 
     response = response.choices[0].message.content
-    print(response)
+    return (response)

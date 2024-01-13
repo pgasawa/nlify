@@ -5,8 +5,8 @@ import writeMessage
 def runAppleScript(scriptTemplate: str, **kwargs):
     try:
         if scriptTemplate == "weather":
-            weather.main()
-            return
+            response = weather.main(kwargs['arg1'])
+            return response
         elif 'Message' in scriptTemplate:
             message = writeMessage.main(kwargs['arg2'])
             kwargs['arg2'] = message
