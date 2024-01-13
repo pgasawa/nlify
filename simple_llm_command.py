@@ -19,8 +19,8 @@ def call_openai_api(prompt):
     )
     return response
 
-def main():
-    user_input = input("Enter your input: ")
+def main(user_input):
+    # user_input = input("Enter your input: ")
     prompt = f"""The user entered command is this: {user_input}. Here is a list of the functions that are available to you: openApplication takes in one parameter, the name of the application to open. closeApplication takes in one parameter, the name of the application to close. speak takes in one parameter, the text to be spoken. Please output in a JSON format the name of the function that should be called and the parameters. For example, if the user says to open safari, please output {{"Function": openApplication, "Argument1": Safari}}."""
     response = call_openai_api(prompt)
     response = response.choices[0].message.content
