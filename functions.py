@@ -14,14 +14,12 @@ functions = {"openApplication": """
     say "{arg1}"
 """,
 
-"sendMessage": """
-  tell application "Messages"
+"sendMessage": """tell application "Messages"
     set targetBuddy to "{arg1}"
-    set targetService to id of 1st account whose service type = iMessage
-    set theBuddy to participant targetBuddy of account id targetService
-    send {arg2} to buddy 
-  end tell
-""",
+    set targetService to id of 1st service whose service type = iMessage
+    set theBuddy to buddy targetBuddy of service id targetService
+    send "{arg2}" to theBuddy
+end tell""",
 	    
 "searchFiles": """
 	tell application "Finder"
