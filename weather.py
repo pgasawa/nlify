@@ -1,7 +1,7 @@
 import requests
 import llm_mapper
 import geocoder
-location_coords = geocoder.ip('me')
+location_coords = geocoder.ip('me').latlng
 
 def get_current_weather(api_key, location):
     base_url = "http://api.weatherapi.com/v1/current.json"
