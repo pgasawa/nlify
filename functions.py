@@ -1,15 +1,15 @@
-openApplication = """
+functions = {"openApplication": """
     tell application "{arg1}"
             activate
     end tell
-"""
+""", 
 
-closeApplication = """
+"closeApplication": """
     tell application "{arg1}"
         quit
     end tell
-"""
+""", 
 
-speak = """
+"speak": """
     say "{arg1}"
-"""
+"""}
