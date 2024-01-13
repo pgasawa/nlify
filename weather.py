@@ -1,5 +1,7 @@
 import requests
 import llm_mapper
+import geocoder
+location_coords = geocoder.ip('me').latlng
 
 def get_current_weather(api_key, location):
     base_url = "http://api.weatherapi.com/v1/current.json"
@@ -22,14 +24,13 @@ def get_current_weather(api_key, location):
         return None
 
 api_key = '5f8609babd8f4d2eb9b220636241301'
-location = 'green bay'
+location_str = str(location_coords[0]) + "," + str(location_coords[1])
 
 # Get and print the current weather
-weather_data = get_current_weather(api_key, location)
+weather_data = get_current_weather(api_key, location_str)
 
 if weather_data:
-    print("Current Weather in", location)
-    print(weather_data)
+    print("Current Weather in", )
 else:
     print("Unable to retrieve current weather data.")
 
