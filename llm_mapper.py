@@ -19,8 +19,8 @@ def call_openai_api(prompt):
     )
     return response
 
-def main():
-    user_input = input("Enter your input: ")
+def main(user_input):
+    # user_input = input("Enter your input: ")
     try:
         routines = pd.read_csv("routines.csv")
         if user_input in routines["routineName"].values:
@@ -40,4 +40,4 @@ def main():
     else:
         print("Command not recognized. Please try again.")
 
-main()
+# main()
