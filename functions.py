@@ -34,4 +34,9 @@ functions = {"openApplication": """
     keystroke "name:" & "{arg1}"
     keystroke return
   end tell
-"""}
+""",
+
+"takeScreenshot": """
+    do shell script "screencapture ~/Desktop/screenshot.png"
+"""
+}
