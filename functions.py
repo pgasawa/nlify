@@ -14,17 +14,6 @@ functions = {"openApplication": """
     say "{arg1}"
 """,
 
-"switchWorkspaceRight": """
-tell application "System Events"
-	key code 124 using control down
-end tell
-""",
-
-"switchWorkspaceLeft": """
-tell application "System Events"
-	key code 123 using control down
-end tell""",
-
 "sendMessage": """
   tell application "Messages"
     set targetBuddy to "{arg1}"
@@ -34,15 +23,15 @@ end tell""",
   end tell
 """,
 	    
-"accessFiles": """
+"searchFiles": """
 	tell application "Finder"
-		activate
-	end tell
-	
-	tell application "System Events"
-		keystroke "f" using {command down, option down}
-		delay 0.5
-		keystroke "name:" & "{arg1}"
-		keystroke return
-	end tell
+    activate
+  end tell
+
+  tell application "System Events"
+    keystroke "f" using command down
+    delay 0.5
+    keystroke "name:" & "{arg1}"
+    keystroke return
+  end tell
 """}
