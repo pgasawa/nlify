@@ -38,5 +38,24 @@ end tell""",
     do shell script "screencapture ~/Desktop/screenshot.png"
 """,
 
-"weather": """weather"""
+"weather": """weather""",
+
+"searchNotes": """
+
+tell application "Notes"
+    quit
+end tell
+
+tell application "Notes"
+  delay 0.5
+	activate
+end tell
+
+tell application "System Events"
+	keystroke "f" using {{command down, option down}}
+	delay 0.5
+	keystroke "{arg1}"
+	keystroke return
+end tell
+"""
 }
