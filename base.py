@@ -1,6 +1,5 @@
 import subprocess
 import functions
-import tempfile
 
 def runAppleScript(scriptTemplate: str, **kwargs):
     try:
@@ -14,5 +13,3 @@ def runAppleScript(scriptTemplate: str, **kwargs):
     except Exception as e:
         print(f"Error: {e}")
         return None
-
-runAppleScript(functions.openApplication, appName="Safari")

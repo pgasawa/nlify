@@ -1,15 +1,15 @@
 openApplication = """
-    tell application "{appName}"
+    tell application "{arg1}"
             activate
     end tell
 """
 
 closeApplication = """
-    tell application "{appName}"
+    tell application "{arg1}"
         quit
     end tell
 """
 
 speak = """
-    say "{text}"
+    say "{arg1}"
 """
