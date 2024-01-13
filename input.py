@@ -30,4 +30,16 @@ entry = ttk.Entry(frame)
 entry.grid(row=0, column=1, padx=10, pady=5, sticky=(tk.W, tk.E))
 
 # Create a button with the defined style to trigger the user input function
-button = ttk.But
+button = ttk.Button(frame, text="Submit", command=get_user_input)
+button.grid(row=1, column=0, columnspan=2, pady=10, sticky=(tk.W, tk.E))
+
+# Center the window on the screen
+root.update_idletasks()
+width = root.winfo_width()
+height = root.winfo_height()
+x = (root.winfo_screenwidth() // 2) - (width // 2)
+y = (root.winfo_screenheight() // 2) - (height // 2)
+root.geometry('{}x{}+{}+{}'.format(width, height, x, y))
+
+# Start the main loop
+root.mainloop()
