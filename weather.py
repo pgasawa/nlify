@@ -33,6 +33,6 @@ if weather_data:
 else:
     print("Unable to retrieve current weather data.")
 
-weather_prompt = "Here is weather data for where I am. Can you give me 5 tips as I prepare for the morning?" + weather_data
+weather_prompt = "Here is weather data for where I am. Can you give me 5 tips as I prepare for the morning?" + str(weather_data)
 
 llm_mapper.call_openai_api(weather_prompt)
