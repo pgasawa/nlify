@@ -32,4 +32,17 @@ end tell""",
     set theBuddy to participant targetBuddy of account id targetService
     send {arg2} to buddy 
   end tell
+""",
+	    
+"accessFiles": """
+	tell application "Finder"
+		activate
+	end tell
+	
+	tell application "System Events"
+		keystroke "f" using {command down, option down}
+		delay 0.5
+		keystroke "name:" & "{arg1}"
+		keystroke return
+	end tell
 """}
