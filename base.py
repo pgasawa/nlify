@@ -1,17 +1,18 @@
 import subprocess
 import functions
+import tempfile
 
-def runAppleScript(script: str, parameters: list):    
-    # Write the AppleScript to a temporary file
-    script_path = "temp.applescript"
-    with open(script_path, "w") as script_file:
-        script_file.write(script)
+def runAppleScript(scriptTemplate: str, **kwargs):
+    try:
+        command = scriptTemplate.format(**kwargs)
+    except Exception as e:
+        print(f"Error: {e}")
+        return None
 
     try:
-        # Run the AppleScript using osascript
-        subprocess.run(["osascript", script_path, *parameters], check=True)
-    finally:
-        # Clean up the temporary script file
-        subprocess.run(["rm", script_path])
+        subprocess.run(["osascript", "-e", command])
+    except Exception as e:
+        print(f"Error: {e}")
+        return None
 
-runAppleScript(functions.closeApplication, ["Safari"])
+runAppleScript(functions.openApplication, appName="Safari")
