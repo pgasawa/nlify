@@ -1,3 +1,2 @@
 routineName,functions
 wake up mode,"[['openApplication', 'slack'], ['closeApplication', 'calculator']]"
-running late message,"[['sendMessage', '9088123201', 'im running late']]"

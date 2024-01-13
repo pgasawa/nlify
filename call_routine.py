@@ -9,7 +9,10 @@ def main(user_input):
     funcs = eval(row["functions"].values[0])
     for func in funcs:
         functionName = functions.functions[func[0]]
-        arg1 = func[1]
+        try:
+            arg1 = func[1]
+        except:
+            arg1 = ""
         try:
             arg2 = func[2]
         except:
