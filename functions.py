@@ -12,4 +12,16 @@ functions = {"openApplication": """
 
 "speak": """
     say "{arg1}"
+""",
+
+"switchWorkspaceRight": """
+tell application "System Events"
+	key code 124 using control down
+end tell
+""",
+
+"switchWorkspaceLeft": """
+tell application "System Events"
+	key code 123 using control down
+end tell
 """}
