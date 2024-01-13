@@ -37,4 +37,5 @@ weather_prompt = "Here is weather data for where I am. Can you give me 5 tips as
 
 response = llm_mapper.call_openai_api(weather_prompt)
 
+response = response.choices[0].message.content
 print(response)
