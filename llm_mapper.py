@@ -24,7 +24,7 @@ def main(user_input):
     try:
         routines = pd.read_csv("routines.csv")
         if user_input in routines["routineName"].values:
-            call_routine.main(user_input)
+            response = call_routine.main(user_input)
             return
     except:
         routines = pd.DataFrame()

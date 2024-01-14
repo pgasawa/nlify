@@ -1,5 +1,2 @@
 routineName,functions
-wake up mode,"[['openApplication', 'slack'], ['closeApplication', 'calculator']]"
-close news,"[['closeApplication', 'News']]"
-search notes for to do,"[['openApplication', 'Notes'], ['speak', 'Searching notes for to do items'], ['takeScreenshot']]"
-close everything,"[['closeApplication', 'Spotify'], ['closeApplication', 'Messages'], ['closeApplication', 'News'], ['closeApplication', 'Notes']]"
+morning mode,"[['openApplication', 'Spotify', 'classical'], ['sendMessage', '9088123201', ""what's up?""], ['weather'], ['openApplication', 'news']]"
