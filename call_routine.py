@@ -25,5 +25,8 @@ def main(user_input):
             arg4 = func[4]
         except:
             arg4 = ""
-        response = base.runAppleScript(functionName, arg1=arg1, arg2=arg2, arg3=arg3, arg4=arg4)
+        response = ""
+        temp = base.runAppleScript(functionName, arg1=arg1, arg2=arg2, arg3=arg3, arg4=arg4)
+        if temp:
+            response = temp
     return response
