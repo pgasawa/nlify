@@ -2,6 +2,19 @@ functions = {"openApplication": """
     tell application "{arg1}"
             activate
     end tell
+             
+    if length of "{arg2}" is not 0 then
+        delay 3
+        tell application "System Events"
+            keystroke "f" using {{command down, option down}}
+            delay 0.5
+            keystroke "{arg2}"
+            keystroke return
+        end tell
+    else
+        --
+    end if
+
 """, 
 
 "closeApplication": """

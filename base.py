@@ -1,6 +1,7 @@
 import subprocess
 import weather
 import writeMessage
+import functions
 
 def runAppleScript(scriptTemplate: str, **kwargs):
     try:
@@ -20,3 +21,5 @@ def runAppleScript(scriptTemplate: str, **kwargs):
     except Exception as e:
         print(f"Error: {e}")
         return None
+    
+# runAppleScript(functions.functions["searchNotes"], arg1="trip")
